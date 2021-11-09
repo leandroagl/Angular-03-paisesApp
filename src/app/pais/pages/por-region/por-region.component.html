@@ -1,0 +1,27 @@
+<h3 class="animate__animated animate__flipInX">Buscar por region <small>{{regionActiva | titlecase}}</small></h3>
+<hr>
+
+<h5 class="animate__animated animate__flipInX">Selecciones la region</h5>
+
+<!-- Mostrar una clase si una condicion se cumple -->
+<!-- [class.btn-primary]="region === regionActiva"-->
+<!-- [ngClass]="{
+               'btn-primary': regionActiva === region,
+               'btn-outline-primary': regionActiva !== region
+             }" -->
+
+<div class="row animate__animated animate__flipInX">
+  <div class="col">
+    <button *ngFor="let region of regiones"
+             [class]="getClaseCSS(region)"
+             (click)="activarRegion(region)">
+      {{region | titlecase}}
+    </button>
+  </div>
+</div>
+
+<div *ngIf="paises.length > 0" class="row" >
+  <div class="col">
+    <app-pais-tabla [paises]="paises"></app-pais-tabla> <!-- entre corchetes se manda la informacion a mostrar desde el componente reutilizable -->
+  </div>
+</div>

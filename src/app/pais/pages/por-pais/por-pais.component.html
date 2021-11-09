@@ -1,0 +1,42 @@
+<h2 class="animate__animated animate__flipInX">Por País</h2>
+<hr>
+
+<div class="row animate__animated animate__flipInX">
+  <div class="col">
+    <app-pais-input
+    placeholder="Buscar país..."
+    (onEnter)="buscar($event)"
+    (onDebounce)="sugerencias($event)">
+  </app-pais-input> <!-- evento que viene de pais input, para poder mostrar la data -->
+  </div>
+</div>
+
+<!-- Sugerencias al buscar pais -->
+<ul *ngIf="mostrarSugerencias"
+    class="list-group">
+  <li *ngFor="let pais of paisesSugeridos"
+      class="list-group-item list-group-item-action">
+    <a
+    class="nav-link"
+    [routerLink]="['/pais', pais.alpha2Code]">
+      {{pais.name}}
+    </a>
+  </li>
+  <li class="list-group-item list-group-item-action">
+    <a class="nav-link" (click)="buscarSugerido(termino)">
+      Buscar "{{termino}}"
+    </a>
+  </li>
+</ul>
+
+<hr>
+
+<div *ngIf="hayError" class="alert alert-danger">
+  No se encontró nada con el término {{termino}}
+</div>
+
+<div *ngIf="paises.length > 0" class="row">
+  <div class="col">
+    <app-pais-tabla [paises]="paises"></app-pais-tabla> <!-- entre corchetes se manda la informacion a mostrar desde el componente reutilizable -->
+  </div>
+</div>
