@@ -276,10 +276,10 @@ __webpack_require__.r(__webpack_exports__);
 class PaisService {
     constructor(http) {
         this.http = http;
-        this.apiUrl = 'https://restcountries.eu/rest/v2';
+        this.apiUrl = 'https://restcountries.com/v2';
     } // Peticiones HTTP
     get httpParams() {
-        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpParams"]().set('fields', 'name;capital;alpha2Code;flag;population');
+        return new _angular_common_http__WEBPACK_IMPORTED_MODULE_0__["HttpParams"]().set('fields', '');
     }
     buscarPais(termino) {
         const url = `${this.apiUrl}/name/${termino}`;

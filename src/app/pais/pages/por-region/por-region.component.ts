@@ -35,6 +35,7 @@ export class PorRegionComponent  {
       console.log(paises)
     });
 
+
   }
 
 }
